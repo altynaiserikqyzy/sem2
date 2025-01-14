@@ -7,7 +7,6 @@ is a
 multiline 
 string"""
 print(a)
-print(" ")
 
 b = "Hello, World!" 
 print(a[1])
