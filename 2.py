@@ -9,3 +9,4 @@ print("Hello, World!")
 written in
 more than one line'''
 print(14)
+print("it is hard")
