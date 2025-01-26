@@ -1,12 +1,11 @@
-first=("myname" , 12 , 12.88 , 's' , True)
-#Iterate through the items and print the values:
-for x in first:
+thislist = ["apple", "banana", "cherry", "banana", "kiwi"]
+for x in thislist:
     print(x)
-#Print all items by referring to their index number
-for i in range(len(first)):
-    print(first[i])
-#Print all items, using a while loop to go through all the index numbers:
-i = 0 
-while i < len(first):
-    print(first[i])
+thislist.pop()
+for i in range(len(thislist)):
+    print(thislist[i])
+i = 0
+while i < len(thislist):
+    print(thislist[i])
     i+=1
+[print(x) for x in thislist]
