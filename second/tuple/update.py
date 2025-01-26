@@ -1,0 +1,10 @@
+tuple1 = (42,"Medium tuple",2.71, True, ["apple", "orange"] )
+print(tuple1)
+y = list(tuple1)
+y[0]=38
+tuple1=tuple(y)
+print(tuple1)
+y=list(tuple1)
+y.append("myname")
+tuple1=tuple(y)
+print(tuple1)
