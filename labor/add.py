@@ -1,19 +1,9 @@
-car_info = {
-  "brand": "Ford",
-  "model": "Mustang",
-  "year": 1964
-}
-
-# Adding a new item 'color'
-car_info["color"] = "red"
-print(car_info)
-
-car_info = {
-  "brand": "Ford",
-  "model": "Mustang",
-  "year": 1964
-}
-
-# Using update() to add the 'color' item
-car_info.update({"color": "red"})
-print(car_info)
+thisset = {"apple", "banana", "cherry", True, 1, 2}
+#Add an item to a set, using the add() method:
+thisset.add("open")
+print(thisset)
+#To add items from another set into the current set, use the update() method.
+set1 = {1, 2, 3, "apple", "banana"}
+set2 = {"banana", 4, 5, 6, True}
+set1.update(set2)
+print(set1)
