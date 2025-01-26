@@ -1,19 +1,7 @@
-car_info = {
-  "brand": "Ford",
-  "model": "Mustang",
-  "year": 1964
-}
-
-# Adding a new item 'color'
-car_info["color"] = "red"
-print(car_info)
-
-car_info = {
-  "brand": "Ford",
-  "model": "Mustang",
-  "year": 1964
-}
-
-# Using update() to add the 'color' item
-car_info.update({"color": "red"})
-print(car_info)
+thislist = [ "int" , "str" , "float" , "items"]
+print(thislist)
+thislist.insert(0,"kind of data types:")
+thislist.append("oranges ;)")
+tropical = ["mango", "pineapple", "papaya"]
+thislist.extend(tropical)
+print(thislist)
