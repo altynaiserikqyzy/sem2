@@ -1,6 +1,14 @@
-thisset = {"apple", "banana", "cherry", True, 1, 2}
-#Loop through the set, and print the values
-for x in thisset:
-    print(x)
-#Check if "banana" is present in the set:
-print("banana" in thisset)
+tuple1=("apple" , 12 , 'n' , 12.98 , "string" , "banana", "cherry", "orange", "kiwi", "melon", "mango")
+print(tuple1[1])
+#Negative Indexing
+print(tuple1[-1])
+#Range of Indexes
+print(tuple1[2:5])
+print(tuple1[:4])
+print(tuple1[2:])
+#Range of Negative Indexes
+print(tuple1[-4:-1])
+if 12.98 in tuple1:
+    print("YES , 12.98 in tuple1")
+else:
+    print("no , 12.98 is not in tuple1")
