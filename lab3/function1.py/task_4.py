@@ -7,3 +7,4 @@ def filter_prime(list_of_numbers):
                 return False
         return True
     return [num for num in list_of_numbers if is_prime(num)]
+
