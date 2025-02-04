@@ -1,9 +1,3 @@
-a = int(input())
-b=[]
-for i in range(a):
-    s = int(input())
-    b.append(s)
-
 def uniqus(list_of_nums):
     uniqs=[]
     for i in range(len(list_of_nums)):
