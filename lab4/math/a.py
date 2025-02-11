@@ -4,4 +4,4 @@ class DegreetoRadian:
         self.degree = degree
     def convert(self):
         self.radian = self.degree * math.pi / 180
-        return self.radian
+        return math.fabs(self.radian)

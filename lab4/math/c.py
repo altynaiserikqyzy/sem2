@@ -8,4 +8,4 @@ class Areas():
             self.area = self.length * self.length
         else:
             self.area = self.length * self.length * self.sides / (4 * math.tan(math.pi / self.sides))
-        return self.area
+        return math.fabs(self.area)

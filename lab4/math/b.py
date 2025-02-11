@@ -6,4 +6,4 @@ class Area:
         self.h = h
     def area(self):
         self.area = 0.5 * (self.a + self.b) * self.h
-        return self.area
+        return math.fabs(self.area)
