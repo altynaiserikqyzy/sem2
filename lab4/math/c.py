@@ -9,5 +9,3 @@ class Areas():
         else:
             self.area = self.length * self.length * self.sides / (4 * math.tan(math.pi / self.sides))
         return self.area
-a = Areas(4,25)
-print(a.area())
