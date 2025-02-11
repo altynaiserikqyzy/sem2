@@ -5,4 +5,4 @@ class Paralelogram:
         self.length = length
     def area(self):
         self.area = self.heigth * self.length
-        return self.area
+        return math.fabs(self.area)
