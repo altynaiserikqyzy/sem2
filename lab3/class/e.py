@@ -1,21 +1,13 @@
-class Account:
-    def __init__(self, owner, balance=0):
-        self.owner = owner
-        self.balance = balance
+class student:
+    def __init__(self , name , age , faculty , score):
+        self.name = name 
+        self.age=age
+        self.faculty=faculty
+        self.score=score
 
-    def deposit(self, amount):
-        self.balance += amount
-        print(f"Deposited {amount}. New balance is {self.balance}.")
-
-    def withdraw(self, amount):
-        if amount > self.balance:
-            print("Insufficient funds.")
+    def passes(self):
+        if self.score>50:
+            print(f"Yes, {self.name} passes")
         else:
-            self.balance -= amount
-            print(f"Withdrew {amount}. New balance is {self.balance}.")
-
-# Пример использования
-account = Account("Alice", 100)
-account.deposit(50)
-account.withdraw(30)
-account.withdraw(150)
+            print(f"No , {self.name} fails")
+a = student("Altynai" , 18 , "FIT" , 70)
