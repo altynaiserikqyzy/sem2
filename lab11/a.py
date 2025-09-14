@@ -27,11 +27,13 @@ def search_contacts(cur):
 
 # Функция для добавления нового контакта или обновления существующего
 def upsert_contact(cur, conn):
-    name  = input("Имя: ").strip()
-    phone = input("Телефон: ").strip()
-    cur.execute("CALL upsert_contact(%s, %s)", (name, phone))
-    conn.commit()
-    print(f"Сохранено: {name} → {phone}\n")
+    num = int(input("количество пользователей: "))
+    for i in range(num):
+        name  = input("Имя: ").strip()
+        phone = input("Телефон: ").strip()
+        cur.execute("CALL upsert_contact(%s, %s)", (name, phone))
+        conn.commit()
+        print(f"Сохранено: {name} → {phone}\n")
 
 # Функция для массовой вставки контактов из CSV файла
 def batch_insert_from_csv(cur, conn):

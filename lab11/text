@@ -1,0 +1,76 @@
+CREATE TABLE phonebook (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR NOT NULL,
+    phone VARCHAR NOT NULL
+);
+
+CREATE TYPE contact_input AS (
+    name VARCHAR,
+    phone VARCHAR
+);
+
+CREATE OR REPLACE FUNCTION search_contacts(pattern TEXT)
+RETURNS TABLE(id INT, name VARCHAR, phone VARCHAR)
+AS $$
+BEGIN
+    RETURN QUERY
+    SELECT id, name, phone
+    FROM phonebook
+    WHERE name ILIKE pattern OR phone ILIKE pattern
+    ORDER BY id;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE PROCEDURE upsert_contact(name TEXT, phone TEXT)
+AS $$
+BEGIN
+    IF EXISTS (SELECT 1 FROM phonebook WHERE name = upsert_contact.name) THEN
+        UPDATE phonebook SET phone = upsert_contact.phone WHERE name = upsert_contact.name;
+    ELSE
+        INSERT INTO phonebook(name, phone) VALUES (upsert_contact.name, upsert_contact.phone);
+    END IF;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION batch_insert_contacts(data contact_input[])
+RETURNS TABLE(name VARCHAR, phone VARCHAR)
+AS $$
+DECLARE
+    i contact_input;
+BEGIN
+    FOREACH i IN ARRAY data
+    LOOP
+        BEGIN
+            IF i.name IS NULL OR i.phone IS NULL THEN
+                RETURN NEXT i;
+                CONTINUE;
+            END IF;
+
+            CALL upsert_contact(i.name, i.phone);
+
+        EXCEPTION WHEN OTHERS THEN
+            RETURN NEXT i;
+        END;
+    END LOOP;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION paginate_contacts(limit INT, offset INT)
+RETURNS TABLE(id INT, name VARCHAR, phone VARCHAR)
+AS $$
+BEGIN
+    RETURN QUERY
+    SELECT id, name, phone FROM phonebook
+    ORDER BY id
+    LIMIT limit OFFSET offset;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE PROCEDURE delete_contact_by(name_pattern TEXT, phone_pattern TEXT)
+AS $$
+BEGIN
+    DELETE FROM phonebook
+    WHERE (name_pattern IS NOT NULL AND name ILIKE name_pattern)
+       OR (phone_pattern IS NOT NULL AND phone ILIKE phone_pattern);
+END;
+$$ LANGUAGE plpgsql;

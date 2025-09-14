@@ -21,12 +21,12 @@ while not done:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             done = True
-    #localtime арқылы минут пен сикундты анықтап аламыз
+    #localtime арқылы минут пен секундты анықтап аламыз
     current_time = time.localtime()
     minute = current_time.tm_min
     second = current_time.tm_sec
     
-    #минут пен сикундтың бұрышын алып аламыз
+    #минут пен секундтың бұрышын алып аламыз
     #қазіргі минут * 360 градус / 60 минут + қазіргі секундты қосамыз 
     minute_angle = minute * 6    + (second / 60) * 6   
     second_angle = second * 6  

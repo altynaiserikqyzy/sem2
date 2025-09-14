@@ -56,7 +56,6 @@ def drawLine(screen, start, end, width, color):
             x = (-C - B * y) / A 
             # Draw a circle (pixel) at (x, y) position
             pygame.draw.circle(screen, pygame.Color(color), (x, y), width)
-
  
  
 def drawCircle(screen, start, end, width, color): 
@@ -165,6 +164,8 @@ while True:
         # Handling keyboard events
         if event.type == pygame.KEYDOWN: 
             # Change the mode based on the pressed key
+            if event.key == pygame.K_l:
+                mode = 'rhombus'
             if event.key == pygame.K_r: 
                 mode = 'rectangle'  # Set the mode to draw rectangles
             if event.key == pygame.K_c: 

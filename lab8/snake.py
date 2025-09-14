@@ -92,6 +92,14 @@ class Snake:
             i -= 1
         self.history[0][0] += self.x_dir * scale
         self.history[0][1] += self.y_dir * scale
+    def stolknovenye(self):
+         if self.history[0][0]>=500 or self.history[0][0]<=0:
+             return True
+         if self.history[0][1]>=500 or self.history[0][1]<=0:
+             return True
+         return False
+             
+
 
 # Определяем класс Food для создания объекта еды
 class Food:
@@ -176,6 +184,9 @@ def gameLoop():
         food.show()  # Отображаем еду на экране
         show_score()  # Отображаем счет игрока
         show_level()  # Отображаем уровень игры
+        
+        if snake.stolknovenye():
+            time.sleep(10)
 
         if snake.check_eaten():  # Если змейка съела еду
             food.new_location()  # Устанавливаем новую позицию еды

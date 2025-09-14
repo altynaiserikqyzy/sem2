@@ -5,8 +5,8 @@ pygame.init()
 window_size = (800, 600) 
 screen = pygame.display.set_mode(window_size) 
 pygame.display.set_caption("Draw circle")
-ball_color = pygame.Color('red')
-bg_color = pygame.Color('white')
+ball_color = pygame.Color('pink')
+bg_color = pygame.Color('black')
 
 ball_pos = [400, 300] #шардың пайда болу аймағы
 
@@ -32,4 +32,4 @@ while True:
     screen.fill(bg_color)
     pygame.draw.circle(screen, ball_color, ball_pos, ball_radius)
     pygame.display.flip()
-    pygame.time.Clock().tick(24)
+    pygame.time.Clock().tick(50)

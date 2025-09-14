@@ -1,0 +1,30 @@
+rgalbekovaaltynai=# \c postgres
+You are now connected to database "postgres" as user "rgalbekovaaltynai".
+postgres=# DROP DATABASE IF EXISTS lab10;
+DROP DATABASE
+postgres=# CREATE DATABASE lab10;
+CREATE DATABASE
+postgres=# \c lab10
+You are now connected to database "lab10" as user "rgalbekovaaltynai".
+lab10=# CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(100) NOT NULL,
+    password VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE user_score (
+    id SERIAL PRIMARY KEY,
+    user_id INT REFERENCES users(id),
+    score INT NOT NULL
+);
+CREATE TABLE
+CREATE TABLE
+lab10=# \d
+                     List of relations
+ Schema |       Name        |   Type   |       Owner       
+--------+-------------------+----------+-------------------
+ public | user_score        | table    | rgalbekovaaltynai
+ public | user_score_id_seq | sequence | rgalbekovaaltynai
+ public | users             | table    | rgalbekovaaltynai
+ public | users_id_seq      | sequence | rgalbekovaaltynai
+(4 rows)
